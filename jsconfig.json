@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "_containers/*": ["src/render/containers/*"],
+      "_components/*": ["src/render/components/*"],
+      "_constants/*": ["src/render/constants/*"],
+      "_render/*": ["src/render/*"],
+      "_utils/*": ["src/render/utils/*"],
+      "_assets/*": ["src/render/assets/*"]
+    }
+  },
+  "exclude": ["node_modules", "extensions", "tutorials", "docs", "tutorials-src"]
+}
