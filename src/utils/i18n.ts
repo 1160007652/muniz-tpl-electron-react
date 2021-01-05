@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import LocaleEnUS from '_render/assets/locales/en';
-import LocaleZhCN from '_render/assets/locales/zh';
+import LocaleEnUS from '_assets/locales/en';
+import LocaleZhCN from '_assets/locales/zh';
 
 const resources = {
   enUS: LocaleEnUS,

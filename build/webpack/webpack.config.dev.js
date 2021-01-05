@@ -7,7 +7,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const base = require('./webpack.config.base');
 const config = require('../config');
 
-const { RENDER_PATH_ROOT } = require('../utils/getPath');
+const { SRC_ROOT } = require('../utils/getPath');
 
 // base.output.publicPath = `http://${config.dev.ip}:${config.dev.port}/`;
 base.output.publicPath = '/';
@@ -20,7 +20,7 @@ module.exports = merge(base, {
     aggregateTimeout: 600,
   },
   devServer: {
-    contentBase: path.resolve(RENDER_PATH_ROOT, './dist'),
+    contentBase: path.resolve(SRC_ROOT, './dist'),
     open: true,
     openPage: '', // 启动服务后,首次打开的路由
     hot: true,

@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
 const { webpackEntry } = require('../utils/getEntry');
-const { PROJECT_ROOT, RENDER_PATH_ROOT, LESS_PATH_ROOT } = require('../utils/getPath');
+const { PROJECT_ROOT, SRC_ROOT, LESS_PATH_ROOT } = require('../utils/getPath');
 
 const pkgJson = require('../../package.json');
 
@@ -30,13 +30,27 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.ts(x?)$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: 'ts-loader',
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         use: ['babel-loader'],
         exclude: [/node_modules/],
       },
       {
-        test: /\.worker\.js$/,
+        test: /\.js$/,
+        use: ['source-map-loader'],
+        enforce: 'pre',
+      },
+      {
+        test: /\.worker\.ts$/,
         use: [
           {
             loader: 'worker-loader',
@@ -113,15 +127,15 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.less', '.jsx', '.ts', '.wasm'],
-    modules: [RENDER_PATH_ROOT, path.resolve(PROJECT_ROOT, './node_modules')],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.wasm'],
+    modules: [SRC_ROOT, path.resolve(PROJECT_ROOT, './node_modules')],
     alias: {
-      _render: RENDER_PATH_ROOT,
-      _components: path.resolve(RENDER_PATH_ROOT, './components/'),
-      _containers: path.resolve(RENDER_PATH_ROOT, './containers/'),
-      _constants: path.resolve(RENDER_PATH_ROOT, './constants/'),
-      _utils: path.resolve(RENDER_PATH_ROOT, './utils'),
-      _assets: path.resolve(RENDER_PATH_ROOT, './assets'),
+      _src: SRC_ROOT,
+      _components: path.resolve(SRC_ROOT, './components/'),
+      _containers: path.resolve(SRC_ROOT, './containers/'),
+      _constants: path.resolve(SRC_ROOT, './constants/'),
+      _utils: path.resolve(SRC_ROOT, './utils'),
+      _assets: path.resolve(SRC_ROOT, './assets'),
     },
   },
   plugins: [

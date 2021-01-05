@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import pageURL from '_render/constants/pageURL';
-import Home from '_render/pages/Home';
+import pageURL from '_constants/pageURL';
+import Home from '_src/pages/Home';
 
 const routeMap = [
   {

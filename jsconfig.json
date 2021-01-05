@@ -4,13 +4,13 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "_containers/*": ["src/render/containers/*"],
-      "_components/*": ["src/render/components/*"],
-      "_constants/*": ["src/render/constants/*"],
-      "_render/*": ["src/render/*"],
-      "_utils/*": ["src/render/utils/*"],
-      "_assets/*": ["src/render/assets/*"]
+      "_containers/*": ["src/containers/*"],
+      "_components/*": ["src/components/*"],
+      "_constants/*": ["src/constants/*"],
+      "_src/*": ["src/*"],
+      "_utils/*": ["src/utils/*"],
+      "_assets/*": ["src/assets/*"]
     }
   },
-  "exclude": ["node_modules", "extensions", "tutorials", "docs", "tutorials-src"]
+  "exclude": ["node_modules", "dist"]
 }

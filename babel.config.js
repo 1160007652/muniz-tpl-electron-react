@@ -21,6 +21,7 @@ module.exports = function (api) {
         },
       ],
       '@babel/preset-react',
+      '@babel/preset-typescript',
     ],
     plugins,
     env: {

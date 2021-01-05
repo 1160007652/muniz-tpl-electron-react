@@ -1,11 +1,11 @@
 import React from 'react';
-import LeftMenu from '_render/containers/LeftMenu';
-import SwitchLanguage from '_render/components/SwitchLanguage';
-import SwitchThemes from '_render/components/SwitchThemes';
+import LeftMenu from '_containers/LeftMenu';
+import SwitchLanguage from '_components/SwitchLanguage';
+import SwitchThemes from '_components/SwitchThemes';
 
 import './index.less';
 
-const WebLayout = ({ children }) => {
+const WebLayout: React.FC = ({ children }) => {
   return (
     <div className="web-container">
       <div className="left">
