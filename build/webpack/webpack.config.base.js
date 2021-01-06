@@ -15,6 +15,7 @@ const pkgJson = require('../../package.json');
 const config = require('../config');
 
 module.exports = {
+  // target: 'electron-renderer',
   entry: webpackEntry,
   output: {
     path: path.resolve(PROJECT_ROOT, 'dist'),

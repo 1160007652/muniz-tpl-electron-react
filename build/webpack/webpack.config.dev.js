@@ -13,7 +13,6 @@ const { RENDER_PATH_ROOT } = require('../utils/getPath');
 base.output.publicPath = '/';
 
 module.exports = merge(base, {
-  target: 'web',
   mode: 'development',
   devtool: 'eval-source-map',
   watchOptions: {
@@ -21,12 +20,14 @@ module.exports = merge(base, {
   },
   devServer: {
     contentBase: path.resolve(RENDER_PATH_ROOT, './dist'),
-    open: true,
     openPage: '', // 启动服务后,首次打开的路由
     hot: true,
     host: config.dev.ip,
     port: config.dev.port,
+    stats: 'errors-only',
+    noInfo: false,
     compress: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
       '/pos/*': {
         target: 'http://b.slasharetest.com/',

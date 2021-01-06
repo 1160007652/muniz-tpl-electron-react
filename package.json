@@ -4,7 +4,7 @@
   "description": "Muniz Electron React 模版",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./src/main && electron .",
+    "start:main": "cd ./src/main && electron .",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build/dev.js",
     "build": "cross-env NODE_ENV=production webpack --config ./build/pro.js",
     "lint": "yarn run lint-eslint && yarn run lint-stylelint",
@@ -104,7 +104,8 @@
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.1",
     "react-router-dom": "^5.2.0",
-    "use-immer": "^0.4.2"
+    "use-immer": "^0.4.2",
+    "wait-on": "^5.2.1"
   },
   "browserslist": {
     "production": [
