@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tag } from 'antd';
 import { useTranslation } from 'react-i18next';
+const { ipcRenderer } = require('electron');
 
 import Logo from '_render/assets/images/logo.png';
 
@@ -11,6 +12,14 @@ function Home() {
   return (
     <div className="home">
       <img src={Logo} className="logo"></img>
+      <div
+        onClick={() => {
+          ipcRenderer.send('openWindow');
+        }}
+      >
+        弹出提示
+      </div>
+
       <div className="title">{t('home:title')}</div>
       <div className="technology">
         <Tag>Webpack ^5</Tag>
@@ -22,7 +31,6 @@ function Home() {
         <Tag>mobx ^6</Tag>
         <Tag>mobx-react ^7</Tag>
       </div>
-      <div>sensor ]]] s. sa hehe</div>
       <div style={{ margin: '30px 0 0' }}>更多套件，请使用 muniz 脚手架， 命令：muniz create</div>
     </div>
   );

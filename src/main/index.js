@@ -1,5 +1,5 @@
 const config = require('../../build/config');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 // 创建全局变量并在下面引用，避免被GC
@@ -51,4 +51,23 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+let newWin;
+ipcMain.on('openWindow', function () {
+  console.log('打开窗口');
+  //调用 BrowserWindow打开新窗口
+  newWin = new BrowserWindow({
+    width: 400,
+    height: 300,
+    show: true,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+  newWin.loadURL('http://www.baidu.com');
+
+  newWin.on('closed', () => {
+    newWin = null;
+  });
 });

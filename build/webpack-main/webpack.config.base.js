@@ -41,4 +41,8 @@ module.exports = {
       'process.env.VERSION_APP': JSON.stringify(pkgJson.version),
     }),
   ],
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
 };
