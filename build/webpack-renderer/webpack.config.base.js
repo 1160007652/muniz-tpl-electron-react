@@ -5,9 +5,9 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { DefinePlugin } = require('webpack');
+const { EnvironmentPlugin } = require('webpack');
 
-const { webpackEntry } = require('../utils/getEntry');
+const { webpackRendererEntry } = require('../utils/getEntry');
 const { PROJECT_ROOT, RENDER_PATH_ROOT, LESS_PATH_ROOT } = require('../utils/getPath');
 
 const pkgJson = require('../../package.json');
@@ -15,10 +15,10 @@ const pkgJson = require('../../package.json');
 const config = require('../config');
 
 module.exports = {
-  // target: 'electron-renderer',
-  entry: webpackEntry,
+  target: 'electron-renderer',
+  entry: webpackRendererEntry,
   output: {
-    path: path.resolve(PROJECT_ROOT, 'dist'),
+    path: path.resolve(PROJECT_ROOT, 'dist/renderer'),
     globalObject: 'this',
     chunkFilename: 'async/js/[name].js',
     filename: 'js/[name].js',
@@ -141,8 +141,8 @@ module.exports = {
       chunkFilename: 'async/css/[name].css',
       ignoreOrder: false,
     }),
-    new DefinePlugin({
-      'process.env.VERSION_APP': JSON.stringify(pkgJson.version),
+    new EnvironmentPlugin({
+      VERSION_APP: JSON.stringify(pkgJson.version),
     }),
   ],
 };

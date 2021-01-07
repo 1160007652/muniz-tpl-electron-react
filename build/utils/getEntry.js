@@ -7,13 +7,19 @@
  */
 
 const path = require('path');
-const { RENDER_PATH_ROOT } = require('./getPath');
+const { RENDER_PATH_ROOT, MAIN_PATH_ROOT } = require('./getPath');
 
-const devEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
-const proEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
+// 渲染进程
+const devRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
+const proRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
+const webpackRendererEntry = process.env.NODE_ENV === 'development' ? devRendererEntry : proRendererEntry;
 
-const webpackEntry = process.env.NODE_ENV === 'development' ? devEntry : proEntry;
+// 主进程
+const devMainEntry = path.resolve(MAIN_PATH_ROOT, 'index.js');
+const proMainEntry = path.resolve(MAIN_PATH_ROOT, 'index.js');
+const webpackMainEntry = process.env.NODE_ENV === 'development' ? devMainEntry : proMainEntry;
 
 module.exports = {
-  webpackEntry,
+  webpackRendererEntry,
+  webpackMainEntry,
 };

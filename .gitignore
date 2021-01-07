@@ -6,4 +6,6 @@
 .history/
 .idea
 extensions/
+release/
+dist/
 node_modules

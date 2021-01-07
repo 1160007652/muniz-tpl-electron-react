@@ -1,16 +1,27 @@
 const config = require('../../build/config');
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 // 创建全局变量并在下面引用，避免被GC
 let win;
 
 function createWindow() {
   // 创建浏览器窗口并设置宽高
-  win = new BrowserWindow({ width: 800, height: 600, backgroundColor: 'white' });
-
-  // 加载页面
-  // win.loadFile('./../../public/index.html');
-  win.loadURL(`http://${config.dev.ip}:${config.dev.port}/`);
+  win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    backgroundColor: 'white',
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+  console.log('环境===', process.env.NODE_ENV);
+  if (process.env.NODE_ENV === 'production') {
+    win.loadFile(path.resolve(__dirname, `../renderer/index.html`)).catch(console.error);
+  } else {
+    // 加载页面
+    win.loadURL(`http://${config.dev.ip}:${config.dev.port}/`).catch(console.error);
+  }
 
   // 打开开发者工具
   win.webContents.openDevTools();

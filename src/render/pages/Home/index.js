@@ -22,7 +22,7 @@ function Home() {
         <Tag>mobx ^6</Tag>
         <Tag>mobx-react ^7</Tag>
       </div>
-      <div>sensors.ignoresUnsupportedSensor</div>
+      <div>sensor ]]] s. sa hehe</div>
       <div style={{ margin: '30px 0 0' }}>更多套件，请使用 muniz 脚手架， 命令：muniz create</div>
     </div>
   );

@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConfigProvider } from 'antd';
 import { Provider } from 'mobx-react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import Routes from '_render/routes';
 import rootStore from '_render/stores';
@@ -32,11 +32,11 @@ const Root = () => {
     <Provider {...rootStore}>
       <ThemeProvider>
         <ConfigProvider locale={i18n.language === 'zhCN' ? antdZhCN : antdEnUS}>
-          <BrowserRouter>
+          <HashRouter>
             <WebLayout>
               <Routes />
             </WebLayout>
-          </BrowserRouter>
+          </HashRouter>
         </ConfigProvider>
       </ThemeProvider>
     </Provider>

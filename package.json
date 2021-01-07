@@ -2,11 +2,19 @@
   "name": "muniz-tpl-electron-react",
   "version": "0.0.1",
   "description": "Muniz Electron React 模版",
-  "main": "index.js",
+  "main": "./dist/main/main.js",
   "scripts": {
-    "start:main": "cd ./src/main && electron .",
-    "dev": "cross-env NODE_ENV=development webpack serve --config ./build/dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/pro.js",
+    "start-main": "electron ./dist/main/main.js",
+    "dev": "npm run dev-main && npm run dev-renderer",
+    "dev-renderer": "cross-env NODE_ENV=development webpack serve --config ./build/dev-renderer.js",
+    "dev-main": "cross-env NODE_ENV=development webpack --config ./build/dev-main.js",
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "build-renderer": "cross-env NODE_ENV=production webpack --config ./build/pro-renderer.js",
+    "build-main": "cross-env NODE_ENV=production webpack --config ./build/pro-main.js",
+    "package": "npm run build && electron-builder build --publish never",
+    "package-win": "npm run build && electron-builder build --win --x64",
+    "package-linux": "npm run build && electron-builder build --linux",
+    "package-mac": "npm run build && electron-builder build --mac",
     "lint": "yarn run lint-eslint && yarn run lint-stylelint",
     "lint-eslint": "eslint -c .eslintrc.js --ext .js {src,build}/**/*.js",
     "lint-stylelint": "stylelint --config .stylelintrc.json src/**/*.{less,scss} --syntax scss",
@@ -40,6 +48,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.1",
     "electron": "^11.1.1",
+    "electron-builder": "^22.9.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -95,6 +104,7 @@
     "axios": "^0.21.0",
     "axios-retry": "^3.1.9",
     "classnames": "^2.2.6",
+    "concurrently": "^5.3.0",
     "core-js": "^3.8.1",
     "i18next": "^19.8.4",
     "immer": "^8.0.0",
@@ -134,5 +144,45 @@
     "*.{js,json,html,yml,css,less,scss,md}": [
       "prettier --write"
     ]
+  },
+  "build": {
+    "productName": "Muniz Electron App",
+    "appId": "muniz_electron.app",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "public/",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg",
+      "icon": "./public/images/icon.icns"
+    },
+    "dmg": {
+      "backgroundColor": "#ffffff",
+      "icon": "./public/images/icon.icns",
+      "iconSize": 80,
+      "title": "Muniz Electron App"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    },
+    "linux": {
+      "icon": "./public/images/icon-64.png",
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "./public/images",
+      "output": "release"
+    }
   }
 }
