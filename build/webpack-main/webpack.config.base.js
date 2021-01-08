@@ -10,9 +10,11 @@ module.exports = {
   devtool: false,
   target: 'electron-main',
   entry: webpackMainEntry,
+  externals: {
+    fsevents: "require('fsevents')",
+  },
   output: {
     path: path.resolve(PROJECT_ROOT, './dist/main'),
-    globalObject: 'this',
     filename: 'main.js',
   },
   experiments: {
@@ -26,6 +28,11 @@ module.exports = {
         use: ['babel-loader'],
         exclude: [/node_modules/],
       },
+      {
+        test: /\.node$/,
+        exclude: /node_modules/,
+        use: 'node-loader', // node-loader处理.node文件
+      },
     ],
   },
   resolve: {
@@ -33,6 +40,9 @@ module.exports = {
     // modules: [MAIN_PATH_ROOT, path.resolve(PROJECT_ROOT, './node_modules')],
     alias: {
       _main: MAIN_PATH_ROOT,
+    },
+    fallback: {
+      // fsevents: false,
     },
   },
   plugins: [

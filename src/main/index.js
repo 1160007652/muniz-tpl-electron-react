@@ -25,7 +25,7 @@ function createWindow() {
 
   // 打开开发者工具
   win.webContents.openDevTools();
-
+  console.log('test - 12');
   // 添加window关闭触发事件
 
   win.on('closed', () => {
@@ -55,7 +55,7 @@ app.on('activate', () => {
 
 let newWin;
 ipcMain.on('openWindow', function () {
-  console.log('打开窗口');
+  console.log('打开窗口-123');
   //调用 BrowserWindow打开新窗口
   newWin = new BrowserWindow({
     width: 400,
