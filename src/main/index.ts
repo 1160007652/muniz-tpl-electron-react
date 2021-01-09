@@ -25,7 +25,7 @@ function createWindow() {
 
   // 打开开发者工具
   win.webContents.openDevTools();
-  console.log('test - 12');
+  console.log('test - 123');
   // 添加window关闭触发事件
 
   win.on('closed', () => {

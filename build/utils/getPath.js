@@ -5,17 +5,23 @@
  * @ Modified time: 2020-06-12 12:07:49
  * @ Description: 项目运行所需要的目录路径
  */
+
 const path = require('path');
 
 // 项目根目录
 const PROJECT_ROOT = path.resolve(__dirname, '../../');
 // 项目下的 SRC 开发目录
 const SRC_ROOT = path.resolve(PROJECT_ROOT, './src');
+const MAIN_PATH_ROOT = path.resolve(SRC_ROOT, './main');
+
 // 项目下的 SRC / less , 全局注入 LESS 变量样式
-const LESS_PATH_ROOT = path.resolve(SRC_ROOT, './assets/less');
+const RENDER_PATH_ROOT = path.resolve(SRC_ROOT, './render');
+const LESS_PATH_ROOT = path.resolve(RENDER_PATH_ROOT, './assets/less');
 
 module.exports = {
   PROJECT_ROOT,
   SRC_ROOT,
   LESS_PATH_ROOT,
+  RENDER_PATH_ROOT,
+  MAIN_PATH_ROOT,
 };

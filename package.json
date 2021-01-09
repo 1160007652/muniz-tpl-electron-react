@@ -1,8 +1,8 @@
 {
-  "name": "chrome-extensions-tpl",
+  "name": "muniz-tpl-electron-react",
   "version": "0.0.1",
-  "description": "Muniz 浏览器插件 模版",
-  "main": "index.js",
+  "description": "Muniz Electron React 模版",
+  "main": "./dist/main/main.js",
   "scripts": {
     "start-main": "electron ./dist/main/main.js",
     "dev": "npm run dev-main && npm run dev-renderer",
@@ -49,11 +49,13 @@
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-import": "^1.13.0",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.3.0",
     "copy-webpack-plugin": "^6.0.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.1",
     "electron": "^11.1.1",
+    "electron-builder": "^22.9.1",
     "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.11.0",
@@ -155,5 +157,45 @@
     "*.{js,json,html,yml,css,less,scss,md}": [
       "prettier --write"
     ]
+  },
+  "build": {
+    "productName": "Muniz Electron App",
+    "appId": "muniz_electron.app",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "public/",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg",
+      "icon": "./public/images/icon.icns"
+    },
+    "dmg": {
+      "backgroundColor": "#ffffff",
+      "icon": "./public/images/icon.icns",
+      "iconSize": 80,
+      "title": "Muniz Electron App"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    },
+    "linux": {
+      "icon": "./public/images/icon-64.png",
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "./public/images",
+      "output": "release"
+    }
   }
 }

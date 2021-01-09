@@ -38,3 +38,21 @@ $ yarn build
 ```
 
 > 构造的资源位于 **"项目根目录/dist"**
+
+### 问题记录：
+
+#### 1. 如果打包时候，发现 **Command failed: codesign --sign** 问题
+
+执行
+
+```bash
+export CSC_IDENTITY_AUTO_DISCOVERY=false
+```
+
+#### 2. 安装 electron 慢，请输入如下镜像
+
+执行
+
+```bash
+export ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/
+```
