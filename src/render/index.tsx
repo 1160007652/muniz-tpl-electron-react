@@ -12,12 +12,12 @@ import { ConfigProvider } from 'antd';
 import { Provider } from 'mobx-react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Routes from '_src/routes';
-import rootStore from '_src/stores';
-import i18n from '_utils/i18n';
-import { ThemeProvider } from '_components/SwitchThemes';
+import Routes from '_render/routes';
+import rootStore from '_render/stores';
+import i18n from '_render/utils/i18n';
+import { ThemeProvider } from '_render/components/SwitchThemes';
 
-import { WebLayout } from '_src/Layout';
+import { WebLayout } from '_render/Layout';
 
 // antd 组件库 多语言
 import antdEnUS from 'antd/lib/locale/en_US';

@@ -53,12 +53,12 @@ module.exports = {
       },
       alias: {
         map: [
-          ['_src', path.resolve(__dirname, './src/')],
-          ['_components', path.resolve(__dirname, './src/components/')],
-          ['_containers', path.resolve(__dirname, './src/containers/')],
-          ['_constants', path.resolve(__dirname, './src/constants/')],
-          ['_utils', path.resolve(__dirname, './src/utils/')],
-          ['_assets', path.resolve(__dirname, 'src/assets/')],
+          ['_render', path.resolve(__dirname, './src/render/')],
+          ['_components', path.resolve(__dirname, './src/render/components/')],
+          ['_containers', path.resolve(__dirname, '.src/render/containers/')],
+          ['_constants', path.resolve(__dirname, '.src/render/constants/')],
+          ['_utils', path.resolve(__dirname, '.src/render/utils/')],
+          ['_assets', path.resolve(__dirname, '.src/render/assets/')],
         ],
         extensions: ['.js', '.less', '.jsx', '.json', '.jsonc', '.wasm'],
       },

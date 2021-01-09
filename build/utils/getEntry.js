@@ -5,15 +5,20 @@
  * @ Modified time: 2020-06-15 11:55:46
  * @ Description: webpack 打包入口配置文件
  */
-
 const path = require('path');
-const { SRC_ROOT } = require('./getPath');
+const { RENDER_PATH_ROOT, MAIN_PATH_ROOT } = require('./getPath');
 
-const devEntry = path.resolve(SRC_ROOT, 'index.tsx');
-const proEntry = path.resolve(SRC_ROOT, 'index.tsx');
+// 渲染进程
+const devRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.tsx');
+const proRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.tsx');
+const webpackRendererEntry = process.env.NODE_ENV === 'development' ? devRendererEntry : proRendererEntry;
 
-const webpackEntry = process.env.NODE_ENV === 'development' ? devEntry : proEntry;
+// 主进程
+const devMainEntry = path.resolve(MAIN_PATH_ROOT, 'index.ts');
+const proMainEntry = path.resolve(MAIN_PATH_ROOT, 'index.ts');
+const webpackMainEntry = process.env.NODE_ENV === 'development' ? devMainEntry : proMainEntry;
 
 module.exports = {
-  webpackEntry,
+  webpackRendererEntry,
+  webpackMainEntry,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import SwitchLanguage from '_components/SwitchLanguage';
+import SwitchLanguage from '_render/components/SwitchLanguage';
 
 import Logo from '_assets/images/logo.png';
 import './index.less';
