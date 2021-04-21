@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tag } from 'antd';
 import { useTranslation } from 'react-i18next';
-const { ipcRenderer } = require('electron');
+import platforms from '_utils/platformHelp';
 
 import Logo from '_render/assets/images/logo.png';
 
@@ -14,10 +14,10 @@ function Home() {
       <img src={Logo} className="logo"></img>
       <div
         onClick={() => {
-          ipcRenderer.send('openWindow');
+          platforms.openUrl('https://www.baidu.com');
         }}
       >
-        弹出提示
+        打开百度
       </div>
 
       <div className="title">{t('home:title')}</div>

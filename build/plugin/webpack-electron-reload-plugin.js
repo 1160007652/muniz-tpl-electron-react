@@ -27,8 +27,6 @@ module.exports = class WebpackElectronReloadPlugin {
         .on('error', (data) => {
           console.log(chalk.red(data.toString()));
         });
-
-      console.log('sssssss=>', this.electronProcess.pid);
     });
   }
 };

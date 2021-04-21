@@ -6,6 +6,7 @@ const ElectronReloadPlugin = require('../plugin/webpack-electron-reload-plugin.j
 const base = require('./webpack.config.base');
 
 module.exports = merge(base, {
+  devtool: 'source-map',
   mode: 'development',
   watch: true,
   plugins: [

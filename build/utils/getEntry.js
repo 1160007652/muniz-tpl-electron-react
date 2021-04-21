@@ -7,10 +7,10 @@
  */
 
 const path = require('path');
-const { RENDER_PATH_ROOT, MAIN_PATH_ROOT } = require('./getPath');
+const { RENDER_PATH_ROOT, MAIN_PATH_ROOT, HMR_CLIENT_SCRIPT } = require('./getPath');
 
 // 渲染进程
-const devRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
+const devRendererEntry = [HMR_CLIENT_SCRIPT, path.resolve(RENDER_PATH_ROOT, 'index.js')];
 const proRendererEntry = path.resolve(RENDER_PATH_ROOT, 'index.js');
 const webpackRendererEntry = process.env.NODE_ENV === 'development' ? devRendererEntry : proRendererEntry;
 

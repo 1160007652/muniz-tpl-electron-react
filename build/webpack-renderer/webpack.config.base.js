@@ -3,19 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
-const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { EnvironmentPlugin } = require('webpack');
 
 const { webpackRendererEntry } = require('../utils/getEntry');
-const { PROJECT_ROOT, RENDER_PATH_ROOT, LESS_PATH_ROOT } = require('../utils/getPath');
+const { SRC_ROOT, PROJECT_ROOT, RENDER_PATH_ROOT, LESS_PATH_ROOT } = require('../utils/getPath');
 
 const pkgJson = require('../../package.json');
 
 const config = require('../config');
 
 module.exports = {
-  target: 'electron-renderer',
+  // target: 'electron-renderer',
+  target: 'web',
   entry: webpackRendererEntry,
   output: {
     path: path.resolve(PROJECT_ROOT, 'dist/renderer'),
@@ -25,9 +25,9 @@ module.exports = {
   },
   experiments: {
     // outputModule: true,
-    // syncWebAssembly: true, 兼容 旧版 webpack-4
+    syncWebAssembly: true, // 兼容 旧版 webpack-4
     topLevelAwait: true, // 支持 顶级 await
-    asyncWebAssembly: true,
+    // asyncWebAssembly: true,
   },
   module: {
     rules: [
@@ -117,6 +117,7 @@ module.exports = {
     extensions: ['.js', '.less', '.jsx', '.ts', '.wasm'],
     modules: [RENDER_PATH_ROOT, path.resolve(PROJECT_ROOT, './node_modules')],
     alias: {
+      _src: SRC_ROOT,
       _render: RENDER_PATH_ROOT,
       _components: path.resolve(RENDER_PATH_ROOT, './components/'),
       _containers: path.resolve(RENDER_PATH_ROOT, './containers/'),
@@ -124,11 +125,11 @@ module.exports = {
       _utils: path.resolve(RENDER_PATH_ROOT, './utils'),
       _assets: path.resolve(RENDER_PATH_ROOT, './assets'),
     },
+    // fallback: { util: require.resolve('util/'), env: false },
   },
   plugins: [
     new WebpackBar(),
     new FriendlyErrorsWebpackPlugin(),
-    new AntdDayjsWebpackPlugin(),
     new CopyWebpackPlugin({ patterns: [{ from: 'public/images/', to: 'images' }] }),
     new HtmlWebpackPlugin({
       template: path.resolve(PROJECT_ROOT, './public/index.html'),
