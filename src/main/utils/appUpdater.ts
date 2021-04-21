@@ -11,7 +11,7 @@ class AppUpdater {
     autoUpdater.logger = log;
     autoUpdater.logger.transports.file.level = 'info';
 
-    // 设置更新链接，存放有 update.xml 的链接
+    // 设置存放更新文件 update.xml 的 URL
     autoUpdater.setFeedURL('https://www.baidu.com');
 
     // 即将进行更新
@@ -33,12 +33,16 @@ class AppUpdater {
 
           // if buttonIndex is 0 , start downloading the update
           if (buttonIndex === 0) {
+            // 填写下载最新应用的页面
             shell.openExternal('https://www.baidu.com');
 
+            // 或使用此方法，进行自动下载
             // autoUpdater.downloadUpdate();
           }
         });
     });
+
+    // 采用自动下载，需要将该方法放开
     /*
       autoUpdater.on('update-downloaded', () => {
         dialog

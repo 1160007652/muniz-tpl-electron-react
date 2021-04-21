@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tag } from 'antd';
 import { useTranslation } from 'react-i18next';
+import platforms from '_utils/platformHelp';
 
 import Logo from '_assets/images/logo.png';
 
@@ -11,6 +12,13 @@ function Home() {
   return (
     <div className="home">
       <img src={Logo} className="logo"></img>
+      <div
+        onClick={() => {
+          platforms.openUrl('https://www.baidu.com');
+        }}
+      >
+        打开百度
+      </div>
       <div className="title">{t('home:title')}</div>
       <div className="technology">
         <Tag>Webpack ^5</Tag>

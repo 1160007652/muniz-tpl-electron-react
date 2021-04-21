@@ -29,10 +29,10 @@ class MainWindow {
     });
 
     powerMonitor.on('suspend', () => {
-      this.win.webContents.send('lockAppChange');
+      this.win.webContents.send('screenSleepChange');
     });
     powerMonitor.on('lock-screen', () => {
-      this.win.webContents.send('lockAppChange');
+      this.win.webContents.send('screenSleepChange');
     });
   }
 
