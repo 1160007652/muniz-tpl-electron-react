@@ -53,6 +53,7 @@ module.exports = {
       },
       alias: {
         map: [
+          ['_src', path.resolve(__dirname, './src/')],
           ['_render', path.resolve(__dirname, './src/render/')],
           ['_components', path.resolve(__dirname, './src/render/components/')],
           ['_containers', path.resolve(__dirname, '.src/render/containers/')],

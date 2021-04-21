@@ -1,7 +1,8 @@
 const path = require('path');
 const WebpackBar = require('webpackbar');
 const { webpackMainEntry } = require('../utils/getEntry');
-const { PROJECT_ROOT, MAIN_PATH_ROOT } = require('../utils/getPath');
+const { PROJECT_ROOT, MAIN_PATH_ROOT, SRC_ROOT } = require('../utils/getPath');
+
 const { DefinePlugin } = require('webpack');
 
 const pkgJson = require('../../package.json');
@@ -18,7 +19,7 @@ module.exports = {
     filename: 'main.js',
   },
   experiments: {
-    topLevelAwait: true, // 支持 顶级 await
+    topLevelAwait: true, // Support top await
     asyncWebAssembly: true,
   },
   module: {
@@ -36,7 +37,7 @@ module.exports = {
       {
         test: /\.node$/,
         exclude: /node_modules/,
-        use: 'node-loader', // node-loader处理.node文件
+        use: 'node-loader', // node-loader processes .node files
       },
     ],
   },
@@ -45,6 +46,7 @@ module.exports = {
     // modules: [MAIN_PATH_ROOT, path.resolve(PROJECT_ROOT, './node_modules')],
     alias: {
       _main: MAIN_PATH_ROOT,
+      _src: SRC_ROOT,
     },
     fallback: {
       // fsevents: false,

@@ -12,7 +12,7 @@ module.exports = {
     apiUrl: 'http://yourserver.com/',
   },
   publish: {
-    publicPath: '/',
+    publicPath: './',
   },
   theme: {
     '@primary-color': '#661aff',

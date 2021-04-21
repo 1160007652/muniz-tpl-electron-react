@@ -9,13 +9,13 @@ module.exports = class WebpackElectronReloadPlugin {
   apply(compiler) {
     const { runScript } = this.options;
     compiler.hooks.afterEmit.tap('WebpackElectronReloadPlugin', (compilation) => {
-      // 进程对象不为空，结束进程
+      // The process object is not empty, end the process
       if (this.electronProcess && this.electronProcess.pid) {
-        // 杀掉electronProcess进程
+        // Kill the electronProcess process
         process.kill(this.electronProcess.pid);
       }
 
-      // 重启 electron 进程、应用
+      // Restart electron process and application
       this.electronProcess = spawn('npm', ['run', runScript], {
         shell: true,
         env: process.env,
