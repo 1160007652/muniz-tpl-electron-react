@@ -21,6 +21,10 @@ const electron = {
   screenSleepChange(fn) {
     ipcRenderer.on('screenSleepChange', fn);
   },
+  // 多语言切换
+  appLanguageChange(locale) {
+    ipcRenderer.send('appLanguageChange', locale);
+  },
 };
 
 export default electron;

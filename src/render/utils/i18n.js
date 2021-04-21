@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import platforms from '_utils/platformHelp';
 
 import LocaleEnUS from '_render/assets/locales/en';
 import LocaleZhCN from '_render/assets/locales/zh';
@@ -21,5 +22,8 @@ i18n
       escapeValue: false, // 从xss反应已经安全
     },
   });
+
+// 通知，主进程切换语言
+platforms.appLanguageChange(i18n.language);
 
 export default i18n;

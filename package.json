@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Muniz Electron React 模版",
   "main": "./dist/main/main.js",
+  "homepage": ".",
   "scripts": {
     "start-main": "electron ./dist/main/main.js",
     "dev": "npm run dev-main && npm run dev-renderer",

@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import platforms from '_utils/platformHelp';
 
 import './index.less';
 
@@ -13,6 +14,8 @@ const SwitchLanguage = () => {
 
   const handleToggleLanguage = ({ key }) => {
     i18n.changeLanguage(key);
+    localStorage.setItem('language', key);
+    platforms.appLanguageChange(key);
   };
 
   const MenuList = (

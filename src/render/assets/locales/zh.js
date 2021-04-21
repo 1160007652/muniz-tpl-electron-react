@@ -13,7 +13,7 @@ const zhCN = {
     enUS: '英文',
   },
   home: {
-    title: 'React PC 开发模版',
+    title: 'React Electron 开发模版',
     technology: '技术栈：',
   },
 };
